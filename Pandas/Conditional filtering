@@ -1,0 +1,14 @@
+import numpy as np
+import pandas as pd
+
+df = pd.read_csv("c://Users//Admin//Documents//Coding//Data science//Pandas//tips.csv")
+
+print(df[df['total_bill']>40])
+print(df[df['sex']=='Male'])
+
+# AND, OR
+df[(df['total_bill']>30) & (df['sex']=='Male')]
+
+
+options = ['Sat', 'Sun']
+df[df.isin(options)]

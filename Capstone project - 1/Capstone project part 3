@@ -1,0 +1,40 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# PART 3 - Comparision of fandango ratings to other sites
+fandango = pd.read_csv("c:/Users/Admin/Documents/Coding/Data science/Capstone project - 1/fandango_scrape.csv")
+all_sites = pd.read_csv("c:/Users/Admin/Documents/Coding/Data science/Capstone project - 1/all_sites_scores.csv")
+
+print(all_sites.head())
+print(all_sites.info())
+print(all_sites.describe())
+
+# Rotten Tomatoes
+sns.scatterplot(data=all_sites, x='RottenTomatoes', y='RottenTomatoes_User')
+plt.show()
+all_sites['Rotten_diff'] = all_sites['RottenTomatoes'] - all_sites['RottenTomatoes_User']
+print(all_sites['Rotten_diff'])
+print(all_sites['Rotten_diff'].apply(abs).mean())
+plt.figure(figsize=(5, 3), dpi=150)
+sns.histplot(data=all_sites, x='Rotten_diff', bins=20, kde=True)
+plt.title('Difference between RT Critics and RT Users score')
+all_sites['Rotten_diff'] = all_sites['Rotten_diff'].apply(abs)
+sns.histplot(data=all_sites, x='Rotten_diff', bins=20, kde=True)
+plt.title('Abs difference between RT critics and RT users score')
+plt.show()
+
+print(all_sites[all_sites['Rotten_diff'].nsmallest(5)])
+print(all_sites[all_sites['Rotten_diff'].nlargest(5)])
+
+# MetaCritic
+sns.scatterplot(data=all_sites, x='Metacritic', y='Metacritic_User')
+plt.show()
+
+# IMDB
+plt.figure(figsize=(5, 3), dpi=160)
+sns.scatterplot(data=all_sites, x='Metacritic_user_vote_count', y='IMDB_user_vote_count')
+plt.show()
+
+print(all_sites.nlargest(1, 'IMDB_user_vote_count'))
+print(all_sites['Metacritic_user_vote_count'].nlargest(1))

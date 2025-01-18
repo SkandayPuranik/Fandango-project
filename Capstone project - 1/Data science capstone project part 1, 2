@@ -1,0 +1,33 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+fandango = pd.read_csv("c:/Users/Admin/Documents/Coding/Data science/Capstone project - 1/fandango_scrape.csv")
+print(fandango.head())
+print(fandango.info())
+print(fandango.describe())
+sns.scatterplot(data=fandango, x='RATING', y='VOTES')
+plt.show()
+
+fandango['YEAR'] = fandango['FILM'].apply(lambda title:title.split('(')[-1].replace(')', ''))
+print(fandango['YEAR'].value_counts())
+sns.countplot(data=fandango, x='YEAR')
+plt.show()
+
+print(fandango.nlargest(10, 'VOTES'))
+no_votes = fandango['VOTES'] == 0
+print(no_votes.sum())
+
+fan_reviewed = fandango[fandango['VOTES']>0]
+sns.kdeplot(data=fan_reviewed, x='RATING', clip=[0,5], fill=True, label='True Rating')
+sns.kdeplot(data=fan_reviewed, x='STARS', clip=[0,5], fill=True, label='Stars Displayed')
+plt.legend(loc=(1.01, 0.5))
+plt.show()
+
+fandango['STARS_DIFF'] = fandango['STARS']-fandango['RATING']
+fandango['STARS_DIFF'] = fandango['STARS_DIFF'].round(1)
+plt.figure()
+sns.countplot(data=fandango, x='STARS_DIFF')
+plt.show()
+
+print(fandango[fandango["STARS_DIFF"]==1])

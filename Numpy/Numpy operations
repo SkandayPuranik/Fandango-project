@@ -1,0 +1,20 @@
+import numpy as np
+
+arr = np.arange(0, 10)
+print(arr + 5)
+print(arr - 2)
+print(arr + arr)
+print(arr * arr)
+print(arr/arr)
+print(1/arr)
+print(np.sqrt(arr))
+
+print(arr.sum())
+print(arr.mean())
+print(arr.max())
+print(arr.var())
+print(arr.std())
+
+arr2d = np.arange(0, 25).reshape(5, 5)
+print(arr2d.sum(axis=0))  #Performs operations accross the columns
+print(arr2d.sum(axis=1))  #Performs operations accross the rows

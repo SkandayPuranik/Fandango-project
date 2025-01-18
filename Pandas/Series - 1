@@ -1,0 +1,23 @@
+import numpy as np
+import pandas as pd
+
+my_index = ['USA', 'Canada', 'Mexico']
+my_data = [1776, 1867, 1821]
+
+myser = pd.Series(data=my_data, index=my_index)
+
+# Series from a dictionary
+ages = {'Sam':5, 'Frank': 10, 'Spike': 7}
+pd.Series(ages)
+print(ages['Sam'])
+
+
+# Operations on Series
+q1 = {'Japan': 80, 'China': 450, 'India': 200, 'USA': 250}
+q2 = {'Brazil': 100,'China': 500, 'India': 210,'USA': 260}
+
+sales_q1 = pd.Series(q1)
+sales_q2 = pd.Series(q2)
+
+sales_q1.add(sales_q2, fill_value=0)
+             

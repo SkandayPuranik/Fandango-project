@@ -1,0 +1,23 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Visual styling (Colours and style)
+
+x = np.linspace(0, 11, 10)
+
+# Color, linewidth and linestyle
+fig = plt.figure()
+ax = fig.add_axes([0, 0, 1, 1])
+ax.plot(x, x, color='#1a1918', lw='5', ls = '--')  #RGB HEX code, lw = line width, ls = line style
+
+# Custom line styling
+lines = ax.plot(x, x+1, color='#fc8208', linewidth='3')
+lines[0].set_dashes([5, 2, 5, 2]) # Solid, blank, Solid, blank
+
+# Marker, markersize, markerfacecolor, markeredgewidth, markeredgecolor
+ax.plot(x, x+1, color='#fc8208', linewidth='2', marker='o', ls='--', markersize=10, markerfacecolor='red',markeredgewidth='4', markeredgecolor='orange')
+plt.show()
+
+# Documentation and external sources:
+# https://www.google.com/search?q=hex+colour+picker&rlz=1C1RXQR_enIN1110IN1110&oq=hex+colour+p&gs_lcrp=EgZjaHJvbWUqCggAEAAYsQMYgAQyCggAEAAYsQMYgAQyBwgBEAAYgAQyBggCEEUYOTIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABDIHCAkQABiABKgCALACAA&sourceid=chrome&ie=UTF-8
+# https://matplotlib.org/stable/api/markers_api.html

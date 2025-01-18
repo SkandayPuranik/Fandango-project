@@ -1,0 +1,15 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+df = pd.read_csv("c:/Users/Admin/Documents/Coding/Data science/Seaborn/dm_office_sales.csv")
+
+# Countplot
+plt.figure(figsize=(10, 3), dpi=200)
+sns.countplot(data=df, x='level of education', hue='division', palette='Set2')
+
+# Barplot
+sns.barplot(data=df, x='level of education', y='salary', estimator=np.mean, errorbar='sd', hue='division')
+plt.legend(bbox_to_anchor=(1.05, 1))
+plt.show()

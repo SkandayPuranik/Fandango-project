@@ -1,0 +1,34 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+t = np.linspace(0, 40, 1000)
+#print(t)
+
+d_r = 2.5 * t
+d_s = 3 * (t-5)
+
+fig, ax = plt.subplots()
+plt.title("A bank robber caught")
+plt.xlabel("Time (in minutes)")
+plt.ylabel(" Distance travelled (in km)")
+ax.set_xlim([0, 40])
+ax.set_ylim([0, 100])
+ax.plot(t, d_r, c='green')
+ax.plot(t, d_s, c='brown')
+plt.axvline(x=30, color='purple', linestyle='--')
+plt.axhline(y=75, color='purple', linestyle='--')
+plt.show()
+
+
+t = np.linspace(0, 50, 50)
+Mark1 = 1 * t
+Mark2 = 4 * (t-30)
+fig, ax = plt.subplots()
+plt.title("Jill's solar panel dseigns")
+plt.xlabel("Energy produced (KJ)")
+plt.ylabel("Number of days")
+plt.plot(Mark1)
+plt.plot(Mark2)
+ax.set_xlim([0, 50])
+ax.set_ylim([0, 50])
+plt.show()

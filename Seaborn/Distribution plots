@@ -1,0 +1,35 @@
+# Distribution plots display a single continuous feature
+
+# Rug plot - adds a dash or a tick for every singel value
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+import seaborn as sns
+
+df = pd.read_csv("c:/Users/Admin/Documents/Coding/Data science/Seaborn/dm_office_sales.csv")
+print(df.head())
+
+# Distributio of columns
+plt.figure(figsize=(5, 8), dpi=200)
+sns.rugplot(x='salary', data=df, height=0.5)
+
+# DO NOT USE DISTPLOT
+# Displots
+sns.set_theme(style='darkgrid')
+sns.displot(data=df, x='salary', bins=20, color='red', edgecolor='blue', linewidth=2)  # Bins indicate the number of bars
+
+# Histplots
+sns.histplot(data=df, x='salary', kde=True)
+
+# KDE plot
+sns.kdeplot(data=df, x='salary')
+
+# Sample Data
+np.random.seed(42)
+sample_ages = np.random.randint(0, 100, 200)
+sample_ages = pd.DataFrame(sample_ages, columns=['age'])
+sns.rugplot(data=sample_ages, x='age')
+sns.displot(data=sample_ages, x='age', kde=True, bins=30, rug=True)
+sns.kdeplot(data=sample_ages, x='age', clip=[0, 100], bw_adjust=0.1, shade=True)
+plt.show()

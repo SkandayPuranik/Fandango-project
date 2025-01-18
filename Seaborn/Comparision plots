@@ -1,0 +1,15 @@
+# Comparision plots are 2D versions of different plots
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+df = pd.read_csv("c:/Users/Admin/Documents/Coding/Data science/Seaborn/StudentsPerformance.csv")
+
+# Jointplot
+sns.jointplot(data=df, x='math score', y='reading score', kind='scatter', hue='gender')  # The other kinds are scatter, hist and kde 
+
+# Pairplot
+sns.pairplot(data=df, hue='gender', corner=True)  # Corner removes the duplicate plots
+plt.show()
